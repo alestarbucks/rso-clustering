@@ -2,7 +2,7 @@ import random as r
 import matplotlib.pyplot as plt
 
 class Maze:
-    def __init__(self, x_size=41, y_size=41, exits=2):
+    def __init__(self, x_size, y_size, exits=2):
         if x_size%2 == 0:
             print("Warning: x_size must be odd. Adding 1.")
             self.x_size = x_size + 1
