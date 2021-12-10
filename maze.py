@@ -2,16 +2,16 @@ import random as r
 import matplotlib.pyplot as plt
 
 class Maze:
-    def __init__(self, x_size, y_size, exits=2):
-        if x_size%2 == 0:
+    def __init__(self, height, width, exits=2):
+        if height%2 == 0:
             print("Warning: x_size must be odd. Adding 1.")
-            self.x_size = x_size + 1
-        else: self.x_size = x_size
+            self.x_size = height + 1
+        else: self.x_size = height
 
-        if y_size%2 == 0:
+        if width%2 == 0:
             print("Warning: y_size must be odd. Adding 1.")
-            self.y_size = y_size + 1
-        else: self.y_size = y_size
+            self.y_size = width + 1
+        else: self.y_size = width
 
         self.exits = exits
 
@@ -111,11 +111,11 @@ class Maze:
 
             if side == 0: # arriba
                 x, y = 0, r.randint(1, len(self.grid[0])-2)
-                while self.grid[x+1][y] == 0 or new_maze.grid[x][y] == 1:
+                while self.grid[x+1][y] == 0 or new_maze[x][y] == 1:
                     y = r.randint(1, len(self.grid[0])-2)
             elif side == 1: # dcha
                 x, y = r.randint(1, len(self.grid)-2), len(self.grid[0])-1
-                while self.grid[x][y-1] == 0 or new_maze.grid[x][y] == 1:
+                while self.grid[x][y-1] == 0 or new_maze[x][y] == 1:
                     x = r.randint(1, len(self.grid)-2)
             elif side == 2: # abajo
                 x, y = len(self.grid)-1, r.randint(1, len(self.grid[0])-2)
@@ -149,3 +149,7 @@ class Maze:
     
     def __str__(self):
         return str(self.grid)
+
+
+m = Maze(100,200,3)
+m.display()
