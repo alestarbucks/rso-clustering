@@ -16,7 +16,6 @@ class Maze:
         self.exits = exits
 
         self.grid = self.__generate()
-        self.grid = self.__center()
         self.grid = self.__open()
     
     def __expand(self, state, maze):
@@ -41,10 +40,10 @@ class Maze:
 
         return nodes
 
-    def __center(self):
-        fixed_maze = self.grid
+    def __center(self, maze):
+        fixed_maze = maze
         if sum(fixed_maze[0])+sum(fixed_maze[1]) == 0:
-            for row in range(1, len(self.grid)-1):
+            for row in range(1, len(maze)-1):
                 next_row = row + 1
                 fixed_maze[row] = fixed_maze[next_row]
             fixed_maze[len(fixed_maze)-1] = [0 for _ in range(len(fixed_maze[0]))]
@@ -101,7 +100,7 @@ class Maze:
 
             ii +=1
 
-        return maze
+        return self.__center(maze)
 
     def __open(self):
         new_maze = self.grid
@@ -151,5 +150,3 @@ class Maze:
         return str(self.grid)
 
 
-m = Maze(100,200,3)
-m.display()
