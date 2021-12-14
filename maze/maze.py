@@ -14,6 +14,7 @@ class Maze:
         else: self.y_size = width
 
         self.exits = exits
+        self.exits_list = []
 
         self.grid = self.__generate()
         self.grid = self.__open()
@@ -126,6 +127,7 @@ class Maze:
                     x = r.randint(1, len(self.grid)-2)
             
             new_maze[x][y] = 1
+            self.exits_list.append((x,y))
 
         return new_maze
 

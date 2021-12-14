@@ -3,8 +3,11 @@ import random as r
 import math
 import matplotlib.pyplot as plt
 
-def rso(agents, min_bound, max_bound, objective, max_steps):
-    population = np.random.uniform(min_bound, max_bound, (agents, len(min_bound)))
+def rso(agents, min_bound, max_bound, objective, max_steps, initialization=None):
+    if initialization == None:
+        population = np.random.uniform(min_bound, max_bound, (agents, len(min_bound)))
+    else:
+        population = initialization
 
     # print(population)
     convergence = []
@@ -56,6 +59,6 @@ def rso(agents, min_bound, max_bound, objective, max_steps):
 
 # objective = lambda x: x[0]**2 + x[1]**2
 
-objective = lambda x: -(x[1] + 47) * math.sin(math.sqrt(abs(x[0] / 2 + (x[1] + 47)))) - x[0] * math.sin(math.sqrt(abs(x[0] - (x[1] + 47))))
-b = rso(100, [-512, -512], [512, 512], objective, 200)
-print(b)
+# objective = lambda x: -(x[1] + 47) * math.sin(math.sqrt(abs(x[0] / 2 + (x[1] + 47)))) - x[0] * math.sin(math.sqrt(abs(x[0] - (x[1] + 47))))
+# b = rso(100, [-512, -512], [512, 512], objective, 200)
+# print(b)
