@@ -28,6 +28,7 @@ def rso(agents, min_bound, max_bound, objective, max_steps, initialization=None)
     while step < max_steps:
 
         for rat_index in range(agents):
+            # print(A, population[rat_index], C, best_rat)
             informed_position = A * population[rat_index] + abs(C * (best_rat - population[rat_index]))
             population[rat_index] = (best_rat - informed_position)
             

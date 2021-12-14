@@ -12,7 +12,7 @@ class Maze:
             print("Warning: y_size must be odd. Adding 1.")
             self.y_size = width + 1
         else: self.y_size = width
-
+            
         self.exits = exits
         self.exits_list = []
 

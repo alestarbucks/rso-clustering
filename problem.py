@@ -1,22 +1,8 @@
 from maze import maze
 import random as r
 
-class Problem:
-    def __init__(self, initial, goal=None):
-        self.initial = initial
-        self.goal = goal
-    def actions(self, state):
-        raise NotImplementedError
-    def result(self, state, action):
-        raise NotImplementedError
-    def goal_test(self, state):
-        raise NotImplementedError
-    def path_cost(self, c, state1, action, state2):
-        raise NotImplementedError
-    def value(self, state):
-        raise NotImplementedError
 
-class MazeProblem(Problem):
+class MazeProblem():
     def __init__(self, maze=None, modality='exit'):
         if modality not in ['exit', 'random']:
             raise ValueError('Invalid modality')
@@ -31,23 +17,24 @@ class MazeProblem(Problem):
         if self.modality == 'exit':
             if self.maze.exits < 2:
                 raise ValueError('Maze must have at least 2 exits')
-            initial = r.choice(self.maze.exits_list)
-            goal = r.choice(self.maze.exits_list)
+            self.initial = r.choice(self.maze.exits_list)
+            self.goal = r.choice(self.maze.exits_list)
 
-            while goal == initial:
-                goal = r.choice(self.maze.exits_list)
+            while self.goal == self.initial:
+                self.goal = r.choice(self.maze.exits_list)
         else:
-            initial = [r.randint(1, len(self.maze.grid)-2), r.randint(1, len(self.maze.grid[0])-2)]
+            self.initial = [r.randint(1, len(self.maze.grid)-2), r.randint(1, len(self.maze.grid[0])-2)]
 
-            while self.maze.grid[initial[0]][initial[1]] == 1:
-                initial = [r.randint(1, len(self.maze.grid)-2), r.randint(1, len(self.maze.grid[0])-2)]
+            while self.maze.grid[self.nitial[0]][self.initial[1]] == 1:
+                self.initial = [r.randint(1, len(self.maze.grid)-2), r.randint(1, len(self.maze.grid[0])-2)]
             
-            goal = [r.randint(1, len(self.maze.grid)-2), r.randint(1, len(self.maze.grid[0])-2)]
+            self.goal = [r.randint(1, len(self.maze.grid)-2), r.randint(1, len(self.maze.grid[0])-2)]
 
-            while self.maze.grid[goal[0]][goal[1]] == 1 or goal == initial:
-                goal = [r.randint(1, len(self.maze.grid)-2), r.randint(1, len(self.maze.grid[0])-2)]
+            while self.maze.grid[self.goal[0]][self.goal[1]] == 1 or self.goal == self.initial:
+                self.goal = [r.randint(1, len(self.maze.grid)-2), r.randint(1, len(self.maze.grid[0])-2)]
 
-        Problem.__init__(self, initial, goal)
+        self.min_bounds = [0, 0]
+        self.max_bounds = [self.maze.x_size-1, self.maze.y_size-1]
 
     def actions(self, state):
         actions = []
@@ -82,6 +69,7 @@ class MazeProblem(Problem):
         return c + 1
     
     def fitness(self, state):
+        print(self.goal)
         return self.manhattan(state, self.goal)
     
     def manhattan(self, state1, state2):
