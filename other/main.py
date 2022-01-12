@@ -1,7 +1,7 @@
 from maze import maze
 import problem
 import matplotlib.pyplot as plt
-import rso
+from rso import rso
 import random as r
 import rsoagent
 
