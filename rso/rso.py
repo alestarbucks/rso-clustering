@@ -1,7 +1,6 @@
 import numpy as np
 import random as r
-import math
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 def rso(agents, min_bound, max_bound, objective, max_steps, initialization=None):
     if initialization == None:
@@ -55,8 +54,7 @@ def rso(agents, min_bound, max_bound, objective, max_steps, initialization=None)
         convergence.append(best)
     # plt.plot(convergence)
     # plt.show()
-    print(population)
-    return best_rat
+    return population, best_rat
 
 # objective = lambda x: x[0]**2 + x[1]**2
 

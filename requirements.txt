@@ -1,0 +1,77 @@
+argcomplete==1.10.3
+backcall @ file:///home/conda/feedstock_root/build_artifacts/backcall_1592338393461/work
+backports.functools-lru-cache @ file:///home/conda/feedstock_root/build_artifacts/backports.functools_lru_cache_1618230623929/work
+beautifulsoup4 @ file:///tmp/build/80754af9/beautifulsoup4_1631874778482/work
+Bottleneck @ file:///tmp/build/80754af9/bottleneck_1607575130224/work
+brotlipy==0.7.0
+certifi==2021.10.8
+cffi @ file:///tmp/build/80754af9/cffi_1625814692085/work
+chardet==3.0.4
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+click==8.0.3
+compressed-rtf==1.0.6
+cryptography @ file:///tmp/build/80754af9/cryptography_1639414572950/work
+debugpy @ file:///tmp/build/80754af9/debugpy_1637091799509/work
+decorator @ file:///home/conda/feedstock_root/build_artifacts/decorator_1641555617451/work
+docx2txt==0.8
+ebcdic==1.1.1
+EbookLib==0.17.1
+entrypoints @ file:///home/conda/feedstock_root/build_artifacts/entrypoints_1605121927639/work/dist/entrypoints-0.3-py2.py3-none-any.whl
+extract-msg==0.28.7
+idna @ file:///tmp/build/80754af9/idna_1637925883363/work
+IMAPClient==2.1.0
+ipykernel @ file:///home/conda/feedstock_root/build_artifacts/ipykernel_1641325328741/work/dist/ipykernel-6.6.1-py3-none-any.whl
+ipython @ file:///home/conda/feedstock_root/build_artifacts/ipython_1641404644223/work
+jedi @ file:///home/conda/feedstock_root/build_artifacts/jedi_1637175083648/work
+joblib @ file:///tmp/build/80754af9/joblib_1635411271373/work
+jupyter-client @ file:///home/conda/feedstock_root/build_artifacts/jupyter_client_1637611911738/work
+jupyter-core @ file:///home/conda/feedstock_root/build_artifacts/jupyter_core_1636814260563/work
+lxml==4.7.1
+matplotlib-inline @ file:///home/conda/feedstock_root/build_artifacts/matplotlib-inline_1631080358261/work
+mkl-fft==1.3.1
+mkl-random @ file:///tmp/build/80754af9/mkl_random_1626186066731/work
+mkl-service==2.4.0
+nest-asyncio @ file:///home/conda/feedstock_root/build_artifacts/nest-asyncio_1638419302549/work
+nltk==3.6.5
+numexpr @ file:///tmp/build/80754af9/numexpr_1640689833592/work
+numpy @ file:///tmp/build/80754af9/numpy_and_numpy_base_1634095651905/work
+olefile==0.46
+packaging @ file:///tmp/build/80754af9/packaging_1637314298585/work
+pandas==1.3.5
+parso @ file:///home/conda/feedstock_root/build_artifacts/parso_1638334955874/work
+pdfminer.six==20191110
+pexpect @ file:///home/conda/feedstock_root/build_artifacts/pexpect_1602535608087/work
+pickleshare @ file:///home/conda/feedstock_root/build_artifacts/pickleshare_1602536217715/work
+Pillow==9.0.0
+prompt-toolkit @ file:///home/conda/feedstock_root/build_artifacts/prompt-toolkit_1639065841292/work
+ptyprocess @ file:///home/conda/feedstock_root/build_artifacts/ptyprocess_1609419310487/work/dist/ptyprocess-0.7.0-py2.py3-none-any.whl
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+pycryptodome==3.12.0
+Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1641580240686/work
+pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1635333100036/work
+pyparsing @ file:///tmp/build/80754af9/pyparsing_1635766073266/work
+PySocks @ file:///tmp/build/80754af9/pysocks_1605305812635/work
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+python-pptx==0.6.21
+pytz==2021.3
+pytz-deprecation-shim==0.1.0.post0
+pyzmq==19.0.2
+regex @ file:///opt/conda/conda-bld/regex_1642021319040/work
+requests @ file:///opt/conda/conda-bld/requests_1641824580448/work
+scikit-learn @ file:///tmp/build/80754af9/scikit-learn_1641876005973/work
+scipy @ file:///tmp/build/80754af9/scipy_1641555004408/work
+six @ file:///tmp/build/80754af9/six_1623709665295/work
+sortedcontainers==2.4.0
+soupsieve @ file:///tmp/build/80754af9/soupsieve_1636706018808/work
+SpeechRecognition==3.8.1
+textract==1.6.4
+threadpoolctl @ file:///Users/ktietz/demo/mc3/conda-bld/threadpoolctl_1629802263681/work
+tornado @ file:///home/conda/feedstock_root/build_artifacts/tornado_1610094708661/work
+tqdm @ file:///tmp/build/80754af9/tqdm_1635330843403/work
+traitlets @ file:///home/conda/feedstock_root/build_artifacts/traitlets_1635260543454/work
+tzdata==2021.5
+tzlocal==4.1
+urllib3==1.26.7
+wcwidth @ file:///home/conda/feedstock_root/build_artifacts/wcwidth_1600965781394/work
+xlrd==1.2.0
+XlsxWriter==3.0.2
