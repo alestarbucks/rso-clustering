@@ -4,29 +4,27 @@ import random as r
 import tqdm
 import time
 
-def addc(rat, rat_index, distance, cluster_assignments, n):
+def addc(centroids, distance, cluster_assignments):
     """ADDC: Average Distance to Cluster Centroid"""
 
     cluster_index = 0
     fitness = 0
 
-    for cluster in cluster_assignments[rat_index]:
-        if len(cluster) == 0: continue
+    for cluster_index in range(len(cluster_assignments)):
+        if len(cluster_assignments[cluster_index]) == 0: continue
 
         aux = 0
 
-        for instance in cluster:
-            aux += distance(rat[cluster_index], instance)
+        for instance in cluster_assignments[cluster_index]:
+            aux += distance(centroids[cluster_index], instance)
         
-        fitness += aux/len(cluster)
+        fitness += aux/len(cluster_assignments[cluster_index])
     
-    return fitness/len(rat)
+    return fitness/len(centroids)
 
 def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_steps):
     start_time = time.time()
     population = []
-    n = instances.shape[0]
-    # corr = 0
 
     convergence = []
     best = np.Infinity
@@ -42,7 +40,7 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
             cluster = np.argmin(distances)
             cluster_assignments[rat_index][cluster].append(instance)
 
-        fitness = addc(rat, rat_index, distance, cluster_assignments, n)
+        fitness = addc(rat, distance, cluster_assignments[rat_index])
         if fitness < best:
             best = fitness
             best_rat = rat.copy()
@@ -58,20 +56,14 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
 
     for step in tqdm.tqdm(range(max_steps)):
         for rat_index in range(agents):
-            # print(A, population[rat_index], C, best_rat)
-            # print(len(population[rat_index]))
             informed_position = A * population[rat_index] + abs(C * (best_rat - population[rat_index]))
             population[rat_index] = (best_rat - informed_position)
             
             for centroid in range(k):
                 for coord in range(min_bound.shape[0]):
                     if population[rat_index][centroid][coord] < min_bound[centroid][coord]:
-                        # corr += 1
-                        # print("Correction ", corr, "!")
                         population[rat_index][centroid][coord] = min_bound[centroid][coord]
                     elif population[rat_index][centroid][coord] > max_bound[centroid][coord]:
-                        # corr += 1
-                        # print("Correction ", corr, "!")
                         population[rat_index][centroid][coord] = max_bound[centroid][coord]
         
         C = 2 * r.random()
@@ -87,7 +79,7 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
                 cluster = np.argmin(distances)
                 cluster_assignments[rat_index][cluster].append(instance)
 
-            fitness = addc(rat, rat_index, distance, cluster_assignments, n)
+            fitness = addc(rat, distance, cluster_assignments[rat_index])
 
             if fitness < best:
                 best = fitness
@@ -95,38 +87,4 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
             rat_index += 1
         step += 1
         convergence.append([time.time() - start_time, best])
-        # print("Step ", step, ": ", best)
-    # plt.plot(convergence)
-    # plt.show()
     return population, best_rat, cluster_assignments, convergence
-
-# objective = lambda x: x[0]**2 + x[1]**2
-
-# objective = lambda x: -(x[1] + 47) * math.sin(math.sqrt(abs(x[0] / 2 + (x[1] + 47)))) - x[0] * math.sin(math.sqrt(abs(x[0] - (x[1] + 47))))
-# b = rso(100, [-512, -512], [512, 512], objective, 200)
-# print(b)
-
-# print("Loading data...")
-# tf_idf = pd.read_csv('data/tfidf.csv')
-# print("Done.")
-
-# tf_idf = np.array(tf_idf)
-
-# def euc_distance(mp, mj):
-#     return np.linalg.norm(mp-mj)
-
-# def cos_distance(mp, mj):
-#     return np.dot(mp, mj)/(np.linalg.norm(mp)*np.linalg.norm(mj))
-
-# RSO_ITERATIONS = 50
-# n = tf_idf.shape[0]
-# k = 5
-
-# population, best_rat, cluster_assignments = rso_clustering(instances=tf_idf,
-#         agents=5,
-#         k=k,
-#         min_bound=np.zeros((k,n)),
-#         max_bound=np.ones((k,n)),
-#         distance=euc_distance,
-#         max_steps=RSO_ITERATIONS
-# )
