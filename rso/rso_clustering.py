@@ -1,12 +1,8 @@
 import numpy as np
 import random as r
 # import matplotlib.pyplot as plt
-
-import pandas as pd
 import tqdm
-# import numpy as np
-# import sklearn.cluster as cluster
-# from rso import rso_clustering
+import time
 
 def addc(rat, rat_index, distance, cluster_assignments, n):
     """ADDC: Average Distance to Cluster Centroid"""
@@ -27,6 +23,7 @@ def addc(rat, rat_index, distance, cluster_assignments, n):
     return fitness/len(rat)
 
 def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_steps):
+    start_time = time.time()
     population = []
     n = instances.shape[0]
     # corr = 0
@@ -51,7 +48,7 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
             best_rat = rat.copy()
         rat_index += 1
     
-    convergence.append(best)
+    convergence.append([time.time() - start_time, best])
 
     step = 0
 
@@ -97,7 +94,7 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
                 best_rat = rat.copy()
             rat_index += 1
         step += 1
-        convergence.append(best)
+        convergence.append([time.time() - start_time, best])
         # print("Step ", step, ": ", best)
     # plt.plot(convergence)
     # plt.show()
