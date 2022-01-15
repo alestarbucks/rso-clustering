@@ -25,8 +25,8 @@ def pso_clustering(k, data, distance, n_particles=50, w=0.72, c1=1.49, c2=1.49, 
     start_time = time.time()
     convergence = []
     
-    particles = [random.sample(list(data), k) for _ in range(n_particles)]
-    velocities = np.zeros(n_particles)
+    particles = [np.array(random.sample(list(data), k)) for _ in range(n_particles)]
+    velocities = [np.zeros((k, data.shape[1])) for _ in range(n_particles)]
 
     global_best = None
     global_best_fitness = np.Inf
@@ -34,15 +34,13 @@ def pso_clustering(k, data, distance, n_particles=50, w=0.72, c1=1.49, c2=1.49, 
     for step in tqdm.tqdm(range(max_iter - 1)):
         fitness = []
         cluster_assignments = [[[] for i in range(k)] for j in range(n_particles)]
-        print("A")
 
         for particle_index in range(n_particles):
-            print("AA")
             for instance in data:
                 distances = [distance(instance, centroid) for centroid in particles[particle_index]]
                 cluster_assignments[particle_index][np.argmin(distances)].append(instance)
 
-                fitness.append(addc(particles[particle_index], distance, cluster_assignments[particle_index]))
+            fitness.append(addc(particles[particle_index], distance, cluster_assignments[particle_index]))
 
         current_best_index = np.argmin(fitness)
         current_best = particles[current_best_index]
@@ -52,8 +50,6 @@ def pso_clustering(k, data, distance, n_particles=50, w=0.72, c1=1.49, c2=1.49, 
             global_best = current_best
             global_best_fitness = current_best_fitness
 
-        print("C")
-
         for particle_index in range(n_particles):
             inertia = w * velocities[particle_index]
             current_best_contribution = c1 * random.random() * (current_best - particles[particle_index])
@@ -62,19 +58,18 @@ def pso_clustering(k, data, distance, n_particles=50, w=0.72, c1=1.49, c2=1.49, 
             velocities[particle_index] = inertia + current_best_contribution + global_best_contribution
             
             particles[particle_index] += velocities[particle_index]
-        
-        print("D")
 
-        convergence.append(time.time() - start_time, global_best_fitness)
+        convergence.append([time.time() - start_time, global_best_fitness])
+
+    fitness = []
+    cluster_assignments = [[[] for i in range(k)] for j in range(n_particles)]
 
     for particle_index in range(n_particles):
-        cluster_assignments = [[] for _ in range(k)]
-
         for instance in data:
             distances = [distance(instance, centroid) for centroid in particles[particle_index]]
-            cluster_assignments[np.argmin(distances)] = instance
+            cluster_assignments[particle_index][np.argmin(distances)].append(instance)
 
-            fitness.append(addc(particles[particle_index], distance, cluster_assignments))
+        fitness.append(addc(particles[particle_index], distance, cluster_assignments[particle_index]))
 
     current_best_index = np.argmin(fitness)
     current_best = particles[current_best_index]
