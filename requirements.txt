@@ -11,6 +11,7 @@ charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654
 click==8.0.3
 compressed-rtf==1.0.6
 cryptography @ file:///tmp/build/80754af9/cryptography_1639414572950/work
+cycler @ file:///tmp/build/80754af9/cycler_1637851556182/work
 debugpy @ file:///tmp/build/80754af9/debugpy_1637091799509/work
 decorator @ file:///home/conda/feedstock_root/build_artifacts/decorator_1641555617451/work
 docx2txt==0.8
@@ -18,6 +19,7 @@ ebcdic==1.1.1
 EbookLib==0.17.1
 entrypoints @ file:///home/conda/feedstock_root/build_artifacts/entrypoints_1605121927639/work/dist/entrypoints-0.3-py2.py3-none-any.whl
 extract-msg==0.28.7
+fonttools==4.25.0
 idna @ file:///tmp/build/80754af9/idna_1637925883363/work
 IMAPClient==2.1.0
 ipykernel @ file:///home/conda/feedstock_root/build_artifacts/ipykernel_1641325328741/work/dist/ipykernel-6.6.1-py3-none-any.whl
@@ -26,16 +28,19 @@ jedi @ file:///home/conda/feedstock_root/build_artifacts/jedi_1637175083648/work
 joblib @ file:///tmp/build/80754af9/joblib_1635411271373/work
 jupyter-client @ file:///home/conda/feedstock_root/build_artifacts/jupyter_client_1637611911738/work
 jupyter-core @ file:///home/conda/feedstock_root/build_artifacts/jupyter_core_1636814260563/work
+kiwisolver @ file:///tmp/build/80754af9/kiwisolver_1612281846643/work
 lxml==4.7.1
+matplotlib @ file:///tmp/build/80754af9/matplotlib-suite_1638289681807/work
 matplotlib-inline @ file:///home/conda/feedstock_root/build_artifacts/matplotlib-inline_1631080358261/work
 mkl-fft==1.3.1
 mkl-random @ file:///tmp/build/80754af9/mkl_random_1626186066731/work
 mkl-service==2.4.0
+munkres==1.1.4
 nest-asyncio @ file:///home/conda/feedstock_root/build_artifacts/nest-asyncio_1638419302549/work
 nltk==3.6.5
 numexpr @ file:///tmp/build/80754af9/numexpr_1640689833592/work
 numpy @ file:///tmp/build/80754af9/numpy_and_numpy_base_1634095651905/work
-olefile==0.46
+olefile @ file:///Users/ktietz/demo/mc3/conda-bld/olefile_1629805411829/work
 packaging @ file:///tmp/build/80754af9/packaging_1637314298585/work
 pandas==1.3.5
 parso @ file:///home/conda/feedstock_root/build_artifacts/parso_1638334955874/work
@@ -60,6 +65,7 @@ regex @ file:///opt/conda/conda-bld/regex_1642021319040/work
 requests @ file:///opt/conda/conda-bld/requests_1641824580448/work
 scikit-learn @ file:///tmp/build/80754af9/scikit-learn_1641876005973/work
 scipy @ file:///tmp/build/80754af9/scipy_1641555004408/work
+sip==4.19.13
 six @ file:///tmp/build/80754af9/six_1623709665295/work
 sortedcontainers==2.4.0
 soupsieve @ file:///tmp/build/80754af9/soupsieve_1636706018808/work
