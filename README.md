@@ -17,7 +17,7 @@ conda env create -f environment.yaml
 conda activate multiag
 ```
 
-Once ready, the notebooks that contain all the code necessary to run the experiments are **rso_clustering.ipynb**, **pso_clustering.ipynb**, **kmeans_clustering.ipynb** and **new_rso_clustering.ipynb**. All of them can be found in the root directory of the repository. They can be run either locally via Jupyter or uploading the notebooks to Google Colab (for which the necessary files would also need to be uploaded).
+Once ready, the notebooks that contain all the code necessary to run the experiments are **rso_clustering.ipynb**, **pso_clustering.ipynb**, **kmeans_clustering.ipynb** and **new_rso_clustering.ipynb**. All of them can be found in the root directory of the repository. They can be run either locally via Jupyter or uploading the notebooks to Google Colab (for which the necessary files would also need to be uploaded). Note that each notebook dumps its results in a different sub-folder inside the ```results``` folder. If you decide to remove this folder to re-test, examine the folder structure and recreate it or change the paths in the experiment notebooks before running the tests.
 
 To open the notebooks using Jupyter, execute this command to open a tab in your default browser showing all files in the current directory:
 
