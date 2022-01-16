@@ -3,3 +3,4 @@ data/*/*.pdf
 data/*/*.txt
 data/*/*.zip
 tfidf.csv
+.ipynb_checkpoints
