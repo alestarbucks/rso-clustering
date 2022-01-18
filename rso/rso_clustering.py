@@ -1,6 +1,5 @@
 import numpy as np
 import random as r
-# import matplotlib.pyplot as plt
 import tqdm
 import time
 
@@ -30,10 +29,12 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
     best = np.Infinity
     cluster_assignments = [[[] for _ in range(k)] for _ in range(agents)]
     
+    # initialize rats by assigning a random centroid from the document list
     for i in range(agents):
         population.append(np.array(r.sample(list(instances), k)))
 
     rat_index = 0
+    # assign each instance to the closest centroid for each rat
     for rat in population:
         for instance in instances:
             distances = [distance(instance, rat[i]) for i in range(k)]
@@ -46,15 +47,19 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
             best_rat = rat.copy()
         rat_index += 1
     
+    # track time and best fitness
     convergence.append([time.time() - start_time, best])
 
     step = 0
 
+    # recompute the parameters before updating the rats' positions in the first iteration
     C = 2 * r.random()
     R = r.random() * 4 + 1
     A = R - step * (R / max_steps)
 
+    # main loop
     for step in tqdm.tqdm(range(max_steps)):
+        # update the rats' positions
         for rat_index in range(agents):
             informed_position = A * population[rat_index] + abs(C * (best_rat - population[rat_index]))
             population[rat_index] = (best_rat - informed_position)
@@ -66,6 +71,7 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
                     elif population[rat_index][centroid][coord] > max_bound[centroid][coord]:
                         population[rat_index][centroid][coord] = max_bound[centroid][coord]
         
+        # similar steps as in initial loop above
         C = 2 * r.random()
         R = r.random() * 4 + 1
         A = R - step * (R / max_steps)
@@ -86,5 +92,8 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
                 best_rat = rat.copy()
             rat_index += 1
         step += 1
+
+        # track time and best fitness
         convergence.append([time.time() - start_time, best])
+    
     return population, best_rat, cluster_assignments, convergence

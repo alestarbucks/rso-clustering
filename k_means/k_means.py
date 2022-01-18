@@ -63,14 +63,3 @@ def k_means(k, data, distance, max_iter=100):
         convergence.append([time.time() - start_time, addc(centroids, distance, cluster_assignments)])
 
     return centroids, cluster_assignments, convergence
-
-# def euc_distance(mp, mj):
-#     return np.linalg.norm(mp-mj)
-
-# print("Loading data...")
-# tf_idf = pd.read_csv('data/tfidf.csv')
-# print("Done.")
-
-# tf_idf = np.array(tf_idf)
-
-# print(np.sum([1,2,3], axis=0))

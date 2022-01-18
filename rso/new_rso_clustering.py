@@ -1,8 +1,11 @@
 import numpy as np
 import random as r
-# import matplotlib.pyplot as plt
 import tqdm
 import time
+
+# IMPLEMENTS A DIFFERENT VERSION OF RAT SWARM OPTIMIZATION FOR CLUSTERING
+# THAT UPDATES THE POSITIONS DIFFERENTLY
+# NOT CONSIDERED FOR THE RESULTS IN THE PAPER
 
 def addc(centroids, distance, cluster_assignments):
     """ADDC: Average Distance to Cluster Centroid"""
