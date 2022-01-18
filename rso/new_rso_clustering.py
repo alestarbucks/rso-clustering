@@ -63,7 +63,7 @@ def rso_clustering(instances, agents, k, min_bound, max_bound, distance, max_ste
             population[rat_index] = (best_rat - informed_position)
             
             for centroid in range(k):
-                for coord in range(min_bound.shape[1]):
+                for coord in range(min_bound.shape[0]):
                     if population[rat_index][centroid][coord] < min_bound[centroid][coord]:
                         population[rat_index][centroid][coord] = min_bound[centroid][coord]
                     elif population[rat_index][centroid][coord] > max_bound[centroid][coord]:
