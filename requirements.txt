@@ -47,7 +47,7 @@ parso @ file:///home/conda/feedstock_root/build_artifacts/parso_1638334955874/wo
 pdfminer.six==20191110
 pexpect @ file:///home/conda/feedstock_root/build_artifacts/pexpect_1602535608087/work
 pickleshare @ file:///home/conda/feedstock_root/build_artifacts/pickleshare_1602536217715/work
-Pillow==9.0.0
+Pillow==9.0.1
 prompt-toolkit @ file:///home/conda/feedstock_root/build_artifacts/prompt-toolkit_1639065841292/work
 ptyprocess @ file:///home/conda/feedstock_root/build_artifacts/ptyprocess_1609419310487/work/dist/ptyprocess-0.7.0-py2.py3-none-any.whl
 pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
